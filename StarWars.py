@@ -65,3 +65,6 @@ while True:
         urhajo.sety(300)
 
     meteor.setx(meteor.xcor()-30)
+    if meteor.xcor() < -400:
+        meteor.setx(750)
+        meteor.sety(random.uniform(-300, 300))

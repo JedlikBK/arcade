@@ -48,7 +48,7 @@ urhajo.penup()
 meteor = turtle.Turtle()
 meteor.shape("meteor2.gif")
 meteor.setx(750)
-meteor.sety(random.uniform(-300, 300))
+meteor.sety(random.uniform(-270, 270))
 while True:
     space.update()
     time.sleep(0.2)
@@ -67,4 +67,4 @@ while True:
     meteor.setx(meteor.xcor()-30)
     if meteor.xcor() < -400:
         meteor.setx(750)
-        meteor.sety(random.uniform(-300, 300))
+        meteor.sety(random.randint(-270, 270))

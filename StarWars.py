@@ -5,35 +5,36 @@ import random
 
 def fel():
     ypos = urhajo.ycor()
-    ypos += 10
+    ypos += 15
     urhajo.sety(ypos)
 
 
 def le():
-    ypos = urhajo.ycor()   
-    ypos -= 10
+    ypos = urhajo.ycor()
+    ypos -= 15
     urhajo.sety(ypos)
 
 
 def balra():
-    xpos = urhajo.xcor()   
-    xpos += 10
+    xpos = urhajo.xcor()
+    xpos += 15
     urhajo.setx(xpos)
 
 
 def jobbra():
-    xpos = urhajo.xcor()   
-    xpos -= 10
+    xpos = urhajo.xcor()
+    xpos -= 15
     urhajo.setx(xpos)
 
+
 def robbanas():
-        corX = urhajo.xcor()
-        corY = urhajo.ycor()
-        explosion.setx(corX)
-        explosion.sety(corY)
-        explosion.showturtle()
-        meteor.setx(750)
-        meteor.sety(random.randint(-270, 270))
+    corx = urhajo.xcor()
+    cory = urhajo.ycor()
+    explosion.setx(corx)
+    explosion.sety(cory)
+    explosion.showturtle()
+    meteor.setx(750)
+    meteor.sety(random.randint(-270, 270))
 
 
 space = turtle.Screen()
@@ -101,16 +102,26 @@ while life > 0:
     meteorSzamlalo.write(szamlalo, align="center", font=("Arial", 36, "bold"))
     eletSzamlalo.write(life, align="center", font=("Arial", 36, "bold"))
 
-    meteor.setx(meteor.xcor()-30)
-    if meteor.xcor() < -400:        # meteor újra megjelenik
+    explosion.hideturtle()
+    meteor.setx(meteor.xcor() - 30)
+    if meteor.xcor() < -400:  # meteor újra megjelenik
         meteor.setx(750)
         meteor.sety(random.randint(-270, 270))
         szamlalo += 1
         meteorSzamlalo.clear()
-    if urhajo.distance(meteor.xcor(), meteor.ycor()) < 20:      # meteor eltalál
-        life -= 1
+    if urhajo.distance(meteor.xcor(), meteor.ycor()) < 20:  # meteor eltalál
         robbanas()
+        life -= 1
         eletSzamlalo.clear()
 
-time.sleep(5)
+# meghaltál
+space.update()
+urhajo.hideturtle()
+meteor.hideturtle()
+explosion.hideturtle()
+time.sleep(0.5)
+space.update()
+eletSzamlalo.setx(0)
+eletSzamlalo.sety(0)
 eletSzamlalo.write("Meghaltál!", align="center", font=("Arial", 36, "bold"))
+time.sleep(5)
